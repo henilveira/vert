@@ -38,7 +38,7 @@ export function CTASection() {
           className="mt-12 flex justify-center"
         >
           <a
-            href="https://www.instagram.com/direct/t/17850624900604487"
+            href="https://ig.me/m/vertgroupbrasil"
             target="_blank"
             rel="noopener noreferrer"
           >
