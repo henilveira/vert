@@ -24,10 +24,19 @@ const SOCIAL_LINKS = [
 const FOOTER_LINKS = [
   {
     title: "Navegação",
-    links: NAV_ITEMS.slice(0, 4).map((item) => ({
-      name: item.name,
-      href: item.link,
-    })),
+    links: [
+      { name: "O Problema", href: "#problema" },
+      { name: "Solução", href: "#solucao" },
+      { name: "Como Funciona", href: "#como-funciona" },
+    ],
+  },
+  {
+    title: "Mais",
+    links: [
+      { name: "Método", href: "#solucoes" },
+      { name: "Resultados", href: "#resultados" },
+      { name: "FAQ", href: "#faq" },
+    ],
   },
 ];
 
@@ -42,7 +51,7 @@ export function Footer() {
     >
       {/* Main Footer */}
       <div className="mx-auto max-w-6xl px-4 py-16">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand Column */}
           <motion.div
             initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
@@ -61,7 +70,7 @@ export function Footer() {
             </Link>
 
             <p className="mt-4 max-w-xs text-sm text-muted-foreground leading-relaxed">
-              Guiar processos. Construir negócios. Juntos. Transformamos operações
+              guiar processos. construir negócios. juntos. Transformamos operações
               e criamos produtos escaláveis para empresas que querem crescer com método.
             </p>
 
