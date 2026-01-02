@@ -19,7 +19,9 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@vert/*": ["./*"],
+      "@shadcn/*": ["./components/ui/shadcn/*"],
+      "@aceternity/*": ["./components/ui/aceternity/*"]
     }
   },
   "include": [
