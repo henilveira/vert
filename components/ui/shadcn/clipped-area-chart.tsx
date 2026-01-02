@@ -7,9 +7,9 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { ChartConfig, ChartContainer } from "@/components/ui/chart";
-import { Badge } from "@/components/ui/badge";
+} from "@shadcn/card";
+import { ChartConfig, ChartContainer } from "@shadcn/chart";
+import { Badge } from "@shadcn/badge";
 import { TrendingDown } from "lucide-react";
 import { useRef, useState } from "react";
 import { useSpring, useMotionValueEvent } from "motion/react";
