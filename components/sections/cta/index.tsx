@@ -44,7 +44,7 @@ export function CTASection() {
           >
             <HoverBorderGradient
               containerClassName="rounded-full"
-              className="group/btn flex items-center gap-3 bg-primary px-10 py-4 text-lg font-semibold text-primary-foreground"
+              className="cursor-pointer group/btn flex items-center gap-3 bg-primary px-10 py-4 text-lg font-semibold text-primary-foreground"
               duration={0.8}
             >
               Agendar conversa gratuita

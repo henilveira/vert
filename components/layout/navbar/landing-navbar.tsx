@@ -12,7 +12,7 @@ import {
   NavbarButton,
 } from "@vert/components/ui/aceternity/resizable-navbar";
 import { NavbarLogo } from "./navbar-logo";
-import { ThemeToggle } from "@vert/components/ui/aceternity/theme-toggle";
+import { AnimatedThemeToggler } from "@vert/components/ui/magic/animated-theme-toggler";
 import { NAV_ITEMS } from "@vert/config/navigation";
 
 /**
@@ -42,8 +42,8 @@ export function LandingNavbar() {
         <NavbarLogo />
         <NavItems items={NAV_ITEMS} />
         <div className="flex items-center gap-2">
-          <ThemeToggle />
-          <NavbarButton variant="primary" href="#agendar">
+          <AnimatedThemeToggler />
+          <NavbarButton variant="primary" href="#cta">
             Agendar conversa
           </NavbarButton>
         </div>
@@ -54,7 +54,7 @@ export function LandingNavbar() {
         <MobileNavHeader>
           <NavbarLogo />
           <div className="flex items-center gap-2">
-            <ThemeToggle />
+            <AnimatedThemeToggler />
             <MobileNavToggle
               isOpen={isMobileMenuOpen}
               onClick={handleMobileMenuToggle}
@@ -70,7 +70,15 @@ export function LandingNavbar() {
             <a
               key={item.link}
               href={item.link}
-              onClick={handleMobileMenuClose}
+              onClick={(e) => {
+                e.preventDefault();
+                const targetId = item.link.replace("#", "");
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                  targetElement.scrollIntoView({ behavior: "smooth" });
+                }
+                handleMobileMenuClose();
+              }}
               className="w-full rounded-md px-4 py-2 text-neutral-700 transition-colors hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800"
             >
               {item.name}

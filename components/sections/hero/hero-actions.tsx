@@ -24,7 +24,7 @@ export function HeroActions({ primaryLabel }: HeroActionsProps) {
       >
         <HoverBorderGradient
           containerClassName="rounded-full"
-          className="group/btn flex items-center gap-2 bg-primary px-8 py-3 text-base font-semibold text-primary-foreground"
+          className="cursor-pointer group/btn flex items-center gap-2 bg-primary px-8 py-3 text-base font-semibold text-primary-foreground"
           duration={0.8}
         >
           {primaryLabel}

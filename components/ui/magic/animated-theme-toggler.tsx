@@ -1,8 +1,9 @@
 "use client"
 
 import { useCallback, useEffect, useRef, useState } from "react"
-import { Moon, Sun } from "lucide-react"
+import { IconSun, IconMoon } from "@tabler/icons-react"
 import { flushSync } from "react-dom"
+import { useTheme } from "next-themes"
 
 import { cn } from "@vert/lib/utils"
 
@@ -15,34 +16,28 @@ export const AnimatedThemeToggler = ({
   duration = 400,
   ...props
 }: AnimatedThemeTogglerProps) => {
-  const [isDark, setIsDark] = useState(false)
+  const { theme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
   const buttonRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
-    const updateTheme = () => {
-      setIsDark(document.documentElement.classList.contains("dark"))
-    }
-
-    updateTheme()
-
-    const observer = new MutationObserver(updateTheme)
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["class"],
-    })
-
-    return () => observer.disconnect()
+    setMounted(true)
   }, [])
 
   const toggleTheme = useCallback(async () => {
     if (!buttonRef.current) return
 
+    const newTheme = theme === "dark" ? "light" : "dark"
+
+    // Check if View Transitions API is supported
+    if (!document.startViewTransition) {
+      setTheme(newTheme)
+      return
+    }
+
     await document.startViewTransition(() => {
       flushSync(() => {
-        const newTheme = !isDark
-        setIsDark(newTheme)
-        document.documentElement.classList.toggle("dark")
-        localStorage.setItem("theme", newTheme ? "dark" : "light")
+        setTheme(newTheme)
       })
     }).ready
 
@@ -68,16 +63,41 @@ export const AnimatedThemeToggler = ({
         pseudoElement: "::view-transition-new(root)",
       }
     )
-  }, [isDark, duration])
+  }, [theme, setTheme, duration])
+
+  // Placeholder durante SSR para evitar layout shift
+  if (!mounted) {
+    return (
+      <button
+        ref={buttonRef}
+        className={cn(
+          "relative z-50 cursor-pointer rounded-md p-2 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800",
+          className
+        )}
+        aria-label="Alternar tema"
+        {...props}
+      >
+        <div className="h-5 w-5" />
+      </button>
+    )
+  }
 
   return (
     <button
       ref={buttonRef}
       onClick={toggleTheme}
-      className={cn(className)}
+      className={cn(
+        "relative z-50 cursor-pointer rounded-md p-2 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800",
+        className
+      )}
+      aria-label={theme === "dark" ? "Mudar para tema claro" : "Mudar para tema escuro"}
       {...props}
     >
-      {isDark ? <Sun /> : <Moon />}
+      {theme === "dark" ? (
+        <IconSun className="h-5 w-5 text-neutral-300" />
+      ) : (
+        <IconMoon className="h-5 w-5 text-neutral-600" />
+      )}
       <span className="sr-only">Toggle theme</span>
     </button>
   )

@@ -11,6 +11,35 @@ body {
   padding: 0;
 }
 
+/* Scroll suave com offset para navbar fixa */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+/* View Transitions API para tema animado */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 9999;
+}
+
+.dark::view-transition-old(root) {
+  z-index: 9999;
+}
+
+.dark::view-transition-new(root) {
+  z-index: 1;
+}
+
 :root {
   --background: oklch(1.0000 0 0);
   --foreground: oklch(0.2138 0.0019 286.2347);

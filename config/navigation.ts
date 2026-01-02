@@ -15,6 +15,7 @@ export const NAV_ITEMS: NavItem[] = [
   { name: "Soluções", link: "#solucoes" },
   { name: "Como Funciona", link: "#como-funciona" },
   { name: "Resultados", link: "#resultados" },
+  { name: "Parceria", link: "#parceria" },
 ];
 
 export const BRAND = {

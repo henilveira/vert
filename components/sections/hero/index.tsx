@@ -4,6 +4,7 @@ import { HeroDescription } from "./hero-description";
 import { HeroActions } from "./hero-actions";
 import { HeroGlow } from "./hero-glow";
 import { HeroFloatingIcons } from "./hero-floating-icons";
+import { HeroScrollIndicator } from "./hero-scroll-indicator";
 
 const HERO_CONTENT = {
   titleParts: ["guiar processos.", "construir negócios."],
@@ -30,6 +31,8 @@ export function HeroSection() {
 
         <HeroActions primaryLabel={HERO_CONTENT.primaryAction} />
       </div>
+
+      <HeroScrollIndicator />
     </section>
   );
 }
