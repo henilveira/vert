@@ -35,7 +35,7 @@ const FOOTER_LINKS = [
     title: "Mais",
     links: [
       { name: "Parceria", href: "#parceria" },
-      { name: "Cases", href: "#cases" },
+      // { name: "Cases", href: "#cases" }, // TODO: Habilitar depois
       { name: "Resultados", href: "#resultados" },
       { name: "FAQ", href: "#faq" },
     ],

@@ -16,7 +16,7 @@ export const NAV_ITEMS: NavItem[] = [
   { name: "Como Funciona", link: "#como-funciona" },
   { name: "Método", link: "#solucoes" },
   { name: "Parceria", link: "#parceria" },
-  { name: "Cases", link: "#cases" },
+  // { name: "Cases", link: "#cases" }, // TODO: Habilitar depois
   { name: "Resultados", link: "#resultados" },
   { name: "FAQ", link: "#faq" },
 ];
